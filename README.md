@@ -8,15 +8,3 @@
       <li> Ngrx => https://ngrx.io/ </li> 
       <li> Node.js => https://nodejs.org/ </li> 
 </ul>
-
-## Run
-
-```bash
-npm install
-```
-
-(Do the same for the Backend folder)
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

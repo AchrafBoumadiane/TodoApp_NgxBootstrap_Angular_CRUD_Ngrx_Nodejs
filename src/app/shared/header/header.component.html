@@ -1,0 +1,42 @@
+<nav ngxNavbarDynamicExpand class="navbar-light bg-light" *ngIf="vm$ | async as vm">
+  <a class="navbar-brand" [routerLink]="['/']" > <img src="../../../assets/images/logo.svg" height="30" class="p-mr-2"> </a>
+
+  <button
+    class="navbar-toggler"
+    type="button"
+    (click)="collapse.toggle()"
+    aria-controls="main-nav"
+    aria-expanded="false"
+    aria-label="Navigáció kapcsoló"
+  >
+    <span class="navbar-toggler-icon d-flex align-items-center justify-content-center">  </span>
+  </button>
+  <ngx-navbar-collapse id="main-nav" #collapse="ngxNavbarCollapse" >
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link" [routerLink]="['/']">
+          <i-bs name="house-fill" width="19" height="19"></i-bs>
+          <span class="homeTextMenu">Home</span>
+        </a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link" *ngIf="vm.isLoggedin" [routerLink]="['/todo/list']">
+          <i-bs name="clipboard-check" width="19" height="19" class="downicon"></i-bs>
+          <span class="textmenu">Todo</span>
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="!(vm.isLoggedin)" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link" [routerLink]="['/auth/login']">
+          <i-bs name="box-arrow-in-right" width="19" height="19" class="downicon"></i-bs>
+          <span class="textmenu">Login</span>
+        </a>
+      </li>
+    </ul>
+    <div class="nav navbar-nav navbar-right" *ngIf="vm.isLoggedin" >
+      <a class="nav-link navbar-brand" (click)="logout()" [routerLink]="['/']">
+        <i-bs name="box-arrow-in-right" width="19" height="19" class="downicon"></i-bs>
+        <span class="textmenu">Logout</span>
+      </a>
+    </div>
+  </ngx-navbar-collapse>
+</nav>

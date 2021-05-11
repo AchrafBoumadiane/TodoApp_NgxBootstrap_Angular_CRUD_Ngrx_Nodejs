@@ -1,0 +1,51 @@
+<div class="card mt-3 mb-3">
+  <div class="card-header">
+    <h5 class="card-title"><i-bs name="clipboard-check" width="20" height="20" class="downicon"></i-bs> Edit Task</h5>
+  </div>
+  <div class="card-body">
+      <div class="table-responsive">
+        <form>
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input
+                  type="text"
+                  [(ngModel)]="model.title"
+                  required name="title"
+                  class="form-control"
+                  id="title"
+                  placeholder="Title"
+            >
+          </div>
+          <div class="mb-3 form-group">
+            <label for="description">Description</label>
+            <textarea
+                  class="form-control"
+                  [(ngModel)]="model.description"
+                  name="description"
+                  class="form-control"
+                  id="description"
+                  required
+                  placeholder="Description">
+            </textarea>
+          </div>
+          <div class="mb-4">
+            <label>Completed</label> <br>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" [(ngModel)]="model.completed" id="yes"  name="isCompleted" class="custom-control-input" [value]="true">
+              <label class="custom-control-label green" for="yes">Yes</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" [(ngModel)]="model.completed" id="no" name="isCompleted" class="custom-control-input" [value]="false">
+              <label class="custom-control-label red" for="no">No</label>
+            </div>
+          </div>
+          <button class="btn btn-primary m-1" [routerLink]="['/todo/list']">
+            <i-bs name="backspace-fill" class="downicon"></i-bs> Back To List
+          </button>
+          <button type="submit"  (click)="saveTodo()" class="btn btn-info">
+            <i-bs name="pencil-fill" class="downicon"></i-bs> Update Task
+          </button>
+        </form>
+      </div>
+    </div>
+</div>

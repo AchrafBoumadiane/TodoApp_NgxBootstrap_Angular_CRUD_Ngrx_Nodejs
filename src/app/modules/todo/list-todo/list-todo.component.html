@@ -1,0 +1,44 @@
+<div class="card mt-3 mb-3" *ngIf="td$ | async as td">
+  <div class="card-header">
+    <h5 class="card-title"><i-bs name="clipboard-check" width="20" height="20" class="downicon"></i-bs> List Of Tasks</h5>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Task</th>
+            <th scope="col">Description</th>
+            <th scope="col">Completed</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let todo of td.todos | paginate: { itemsPerPage: 5, currentPage: p }">
+            <td>{{ todo.title }}</td>
+            <td>{{ todo.description }}</td>
+            <td>
+              <span class="badge badge-pill badge-danger" *ngIf="!todo.completed">Not yet</span>
+              <span class="badge badge-pill badge-success" *ngIf="todo.completed">Finish</span>
+            </td>
+            <td>
+              <button type="button" class="btn btn-success btn-sm" routerLink='/todo/list/{{ todo.id }}'>
+                <i-bs name="eye-fill" width="19" height="19" class="downicon"></i-bs>
+              </button>
+              &nbsp;
+              <button type="button" class="btn btn-primary btn-sm" routerLink='/todo/update/{{ todo.id }}'>
+                <i-bs name="pencil-fill" width="19" height="19" class="downicon"></i-bs>
+              </button>
+              &nbsp;
+              <button type="button" class="btn btn-danger btn-sm" (click)="deleteTodo(todo.id)">
+                <i-bs name="trash-fill" width="19" height="19" class="downicon"></i-bs>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="p = $event" class="text-center"></pagination-controls>
+    </div>
+    <button type="button" class="btn btn-info" [routerLink]="['/todo/add']"> <i-bs name="plus-circle-fill" class="downicon"></i-bs> ADD Task</button>
+  </div>
+</div>

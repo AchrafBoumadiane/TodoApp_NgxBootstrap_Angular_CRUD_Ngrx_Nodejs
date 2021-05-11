@@ -1,0 +1,28 @@
+<div class="card mt-3 mb-3">
+  <div class="card-header">
+    <h5 class="card-title"><i-bs name="box-arrow-in-right" width="19" height="19" class="downicon"></i-bs> Login</h5>
+  </div>
+  <div class="card-body">
+      <div class="table-responsive">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="title">Username</label>
+            <input type="text" formControlName="userName" required name="userName" class="form-control" id="userName" placeholder="username"
+                   [ngClass]="{ 'is-invalid': submitted && f.userName.errors }" autofocus>
+            <div *ngIf="submitted && f.userName.errors" class="badge badge-pill badge-danger"> Username is required </div>
+          </div>
+          <div class="form-group">
+            <label for="title">Password</label>
+            <show-hide-password>
+              <input type="text" formControlName="password" required name="password" class="form-control" id="password" placeholder="Password"
+                    autocomplete="new-password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+            </show-hide-password>
+            <div *ngIf="submitted && f.password.errors" class="badge badge-pill badge-danger"> Password is required </div>
+          </div>
+          <button type="submit" class="btn btn-info">
+            <i-bs name="box-arrow-in-right" width="19" height="19" class="downicon"></i-bs> Login
+          </button>
+        </form>
+      </div>
+    </div>
+</div>

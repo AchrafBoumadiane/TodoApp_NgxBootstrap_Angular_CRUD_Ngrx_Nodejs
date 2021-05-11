@@ -1,0 +1,40 @@
+<div class="card mt-3 mb-3">
+  <div class="card-header">
+    <h5 class="card-title"><i-bs name="clipboard-check" width="20" height="20" class="downicon"></i-bs> Add Task</h5>
+  </div>
+  <div class="card-body">
+      <div class="table-responsive">
+        <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" formControlName="title" required name="title" autofocus class="form-control" id="title" placeholder="Title"
+                   [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+            <div *ngIf="submitted && f.title.errors" class="badge badge-pill badge-danger"> Title is required </div>
+          </div>
+          <div class="mb-3 form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" formControlName="description" name="description" class="form-control" id="description"
+                      placeholder="Description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
+            <div *ngIf="submitted && f.description.errors" class="badge badge-pill badge-danger"> Description is required </div>
+          </div>
+          <div class="mb-4">
+            <label>Completed</label> <br>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" formControlName="isCompleted" id="yes" name="isCompleted" class="custom-control-input" value="yes">
+              <label class="custom-control-label green" for="yes">Yes</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" formControlName="isCompleted" id="no" name="isCompleted" class="custom-control-input" value="no">
+              <label class="custom-control-label red" for="no">No</label>
+            </div>
+          </div>
+          <button class="btn btn-primary m-1" [routerLink]="['/todo/list']">
+            <i-bs name="backspace-fill" class="downicon"></i-bs> Back To List
+          </button>
+          <button type="submit" class="btn btn-info">
+            <i-bs name="plus-circle-fill" class="downicon"></i-bs> ADD Task
+          </button>
+        </form>
+      </div>
+    </div>
+</div>

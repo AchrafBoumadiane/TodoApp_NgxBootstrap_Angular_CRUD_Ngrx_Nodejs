@@ -1,0 +1,25 @@
+<div class="card mt-3 mb-3" *ngIf="todo$ | async as todo">
+  <div class="card-header">
+    <h5 class="card-title"><i-bs name="clipboard-check" width="20" height="20" class="downicon"></i-bs> Info Task </h5>
+  </div>
+  <div class="card-body">
+      <ul class="list-group list-group-flush mb-3">
+        <li class="list-group-item"> <strong>Title : </strong> {{ todo.title }} </li>
+        <li class="list-group-item"> <strong> Description : </strong> {{ todo.description }} </li>
+        <li class="list-group-item list-group-item-success" *ngIf="todo.completed">
+          <strong>Completed!</strong>
+        </li>
+        <li class="list-group-item list-group-item-danger" *ngIf="!todo.completed">
+          <strong>Not completed yet!</strong>
+        </li>
+      </ul>
+      <button class="btn btn-primary m-1" [routerLink]="['/todo/list']">
+        <i-bs name="backspace-fill" class="downicon"></i-bs> Back To List
+      </button>
+      &nbsp;
+      <button class="btn btn-danger m-1" (click)="deleteTodo(todo.id)">
+        <i-bs name="trash-fill" class="downicon"></i-bs> Remove
+      </button>
+  </div>
+</div>
+
